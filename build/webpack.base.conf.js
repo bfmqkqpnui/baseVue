@@ -27,7 +27,12 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'src': resolve('src')
     }
+  },
+  externals: {
+    'Promise': 'window.Promise',
+    'es6-promise': 'window.Promise',
   },
   module: {
     rules: [
@@ -45,7 +50,7 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 10000,
+          limit: 500,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
         }
       },
@@ -53,7 +58,7 @@ module.exports = {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 10000,
+          limit: 500,
           name: utils.assetsPath('media/[name].[hash:7].[ext]')
         }
       },

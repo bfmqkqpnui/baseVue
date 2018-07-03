@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>vue-base</title>
+    <title>百联商城</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="format-detection" content="telephone=no, email=no, address=no">
+    <meta name="applicable-device" content="mobile">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta name="description" content="">
+    <meta name="Keywords" content="">
+    <script type="text/javascript">
+      (function() { var a = this; a.width = 750; a.fontSize = 100; a.widthProportion = function() { var c = (document.getElementsByTagName("html")[0].offsetWidth) / a.width; return c > 1 ? 1 : c < 0.42667 ? 0.42667 : c; }; a.changePage=function() { var remVal=( parseFloat(a.widthProportion())*100).toFixed(2); document.getElementsByTagName( "html")[0].setAttribute( "style", "font-size:" + remVal + "px !important"); }; a.changePage(); window.addEventListener( "resize", function() { a.changePage() }, false); })();
+    </script>
+    <!--<link rel="shortcut icon" href="/static/images/favicon.ico">-->
+    <link href=/static/css/app.css rel=stylesheet>
+    <script>
+      var useragent = navigator.userAgent.toLowerCase();
+      if (useragent.indexOf('micromessenger') <= 0) {
+        document.write('<script src="/static/js/sha1.js"><\/script>');
+        document.write('<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"><\/script>');
+      }
+    </script>
   </head>
   <body>
     <div id="app"></div>
-    <!-- built files will be auto injected -->
   </body>
 </html>
