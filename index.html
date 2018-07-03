@@ -17,12 +17,12 @@
     <script type="text/javascript">
       (function() { var a = this; a.width = 750; a.fontSize = 100; a.widthProportion = function() { var c = (document.getElementsByTagName("html")[0].offsetWidth) / a.width; return c > 1 ? 1 : c < 0.42667 ? 0.42667 : c; }; a.changePage=function() { var remVal=( parseFloat(a.widthProportion())*100).toFixed(2); document.getElementsByTagName( "html")[0].setAttribute( "style", "font-size:" + remVal + "px !important"); }; a.changePage(); window.addEventListener( "resize", function() { a.changePage() }, false); })();
     </script>
-    <!--<link rel="shortcut icon" href="/static/images/favicon.ico">-->
     <link href=/static/css/app.css rel=stylesheet>
     <script>
       var useragent = navigator.userAgent.toLowerCase();
-      if (useragent.indexOf('micromessenger') <= 0) {
+      if (useragent.indexOf('micromessenger') >= 0) {
         document.write('<script src="/static/js/sha1.js"><\/script>');
+
         document.write('<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"><\/script>');
       }
     </script>
