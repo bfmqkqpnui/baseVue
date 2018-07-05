@@ -1,31 +1,45 @@
 <template>
   <div class="header">
+    <div class="logo">后台管理系统</div>
     <!-- 折叠按钮 -->
     <div class="collapse-btn" @click="collapseChage">
       <i class="el-icon-menu"></i>
     </div>
-    <div class="logo">后台管理系统</div>
     <div class="header-right">
       <div class="header-user-con">
         <!-- 全屏显示 -->
-        <div class="btn-fullscreen" @click="handleFullScreen">
+        <!--<div class="btn-fullscreen" @click="handleFullScreen">
           <el-tooltip effect="dark" :content="fullscreen?`取消全屏`:`全屏`" placement="bottom">
             <i class="el-icon-rank"></i>
           </el-tooltip>
-        </div>
+        </div>-->
         <!-- 消息中心 -->
-        <div class="btn-bell">
+        <!--<div class="btn-bell">
           <el-tooltip effect="dark" :content="message?`有${message}条未读消息`:`消息中心`" placement="bottom">
             <router-link to="/tabs">
               <i class="el-icon-bell"></i>
             </router-link>
           </el-tooltip>
           <span class="btn-bell-badge" v-if="message"></span>
-        </div>
+        </div>-->
         <!-- 用户头像 -->
-        <div class="user-avator"><img src="static/img/img.jpg"></div>
+        <!--<div class="user-avator"><img src="static/images/head.jpg"></div>-->
+        <!-- 用户昵称 -->
+        <div class="user-avator">
+          <el-dropdown trigger="click" @command="command">
+            <span class="el-dropdown-link">
+              <span>管理员</span>
+              <i class="el-icon-arrow-down el-icon--right"></i>
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item command="userInfo">个人信息</el-dropdown-item>
+              <el-dropdown-item command="changePwd" divided>密码修改</el-dropdown-item>
+              <el-dropdown-item command="logOut" divided>退出登录</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
         <!-- 用户名下拉菜单 -->
-        <el-dropdown class="user-name" trigger="click" @command="handleCommand">
+        <!--<el-dropdown class="user-name" trigger="click" @command="handleCommand">
                     <span class="el-dropdown-link">
                         {{username}} <i class="el-icon-caret-bottom"></i>
                     </span>
@@ -38,7 +52,7 @@
             </a>
             <el-dropdown-item divided command="loginout">退出登录</el-dropdown-item>
           </el-dropdown-menu>
-        </el-dropdown>
+        </el-dropdown>-->
       </div>
     </div>
   </div>
@@ -53,13 +67,27 @@
         collapse: false,
         fullscreen: false,
         name: 'linxin',
-        message: 2
+        message: 2,
+        centerDialogVisible: false,
+        title: '',
       }
     },
     //计算属性
     computed: {},
     //函数集，自己封装，便于开发使用
-    methods: {},
+    methods: {
+      // 侧边栏折叠
+      collapseChage() {
+        this.collapse = !this.collapse;
+        // bus.$emit('collapse', this.collapse);
+        this.$emit("cuttle", this.collapse);
+        console.log("侧边栏折叠触发》" + this.collapse)
+      },
+      command(val) {
+        console.log(">>>>" + val);
+        this.$emit("control",val)
+      },
+    },
     //生命周期钩子：组件实例渲染完成时调用
     mounted() {
 
@@ -71,12 +99,15 @@
 
 <style scoped>
   .header {
-    position: relative;
+    position: fixed;
     box-sizing: border-box;
     width: 100%;
-    height: 70px;
+    height: .7rem;
     font-size: 22px;
     color: #fff;
+    background-color: rgb(50, 65, 87);
+    z-index: 1000;
+    top: 0rem;
   }
 
   .collapse-btn {
@@ -90,6 +121,7 @@
     float: left;
     width: 250px;
     line-height: 70px;
+    text-align: center;
   }
 
   .header-right {

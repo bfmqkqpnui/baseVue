@@ -6,7 +6,8 @@ Vue.use(Router)
 
 const baseRoute = [
   {
-    path: '/'
+    path: '/',
+    redirect: '/home'
   }
 ]
 
