@@ -1,6 +1,6 @@
 # vue-base
 
-> A Vue.js project
+> 后台管理框架-饿了么组件
 
 ## Build Setup
 
